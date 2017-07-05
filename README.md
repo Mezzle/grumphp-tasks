@@ -35,3 +35,19 @@ services:
       - {name: grumphp.task, config: eslint}
 
 ```
+
+## Installation
+
+```
+composer require stickee/grumphp-tasks
+```
+and then either
+```
+yarn add eslint eslint-config-standard eslint-plugin-promise eslint-plugin-standard
+```
+
+or 
+
+```
+npm install --save eslint eslint-config-standard eslint-plugin-promise eslint-plugin-standard
+```
