@@ -96,7 +96,7 @@ final class ESLint extends AbstractExternalTask
         $arguments->addOptionalArgument('--config %s', $config['config']);
         $arguments->addOptionalArgument('--debug', $config['debug']);
 
-        if ($context instanceof RunContext && $config['config_file'] !== null) {
+        if ($context instanceof RunContext && $config['config'] !== null) {
             return $this->runOnAllFiles($context, $arguments);
         }
 
