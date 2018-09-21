@@ -54,11 +54,13 @@ final class ESLint extends AbstractExternalTask
         $resolver = new OptionsResolver();
         $resolver->setDefaults(
             [
+                'no_eslintrc' => false,
                 'config' => null,
                 'debug' => false,
             ]
         );
 
+        $resolver->addAllowedTypes('no_eslintrc', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
         $resolver->addAllowedTypes('debug', ['bool']);
 
@@ -93,6 +95,7 @@ final class ESLint extends AbstractExternalTask
 
         $arguments = $this->processBuilder->createArgumentsForCommand('eslint');
         $arguments->add('--format=table');
+        $arguments->addOptionalArgument('--no-eslintrc', $config['no_eslintrc']);
         $arguments->addOptionalArgument('--config %s', $config['config']);
         $arguments->addOptionalArgument('--debug', $config['debug']);
 
