@@ -2,8 +2,7 @@
 /**
  * @copyright (c) 2006-2017 Stickee Technology Limited
  */
-
-namespace Stickee\GrumPHP;
+namespace Mez\GrumPHP;
 
 use GrumPHP\Collection\FilesCollection;
 use GrumPHP\Collection\ProcessArgumentsCollection;
@@ -74,7 +73,7 @@ final class ESLint extends AbstractExternalTask
      */
     public function canRunInContext(ContextInterface $context)
     {
-        return ($context instanceof GitPreCommitContext || $context instanceof RunContext);
+        return $context instanceof GitPreCommitContext || $context instanceof RunContext;
     }
 
     /**
@@ -85,7 +84,7 @@ final class ESLint extends AbstractExternalTask
     public function run(ContextInterface $context)
     {
         $files = $context->getFiles()->name('*.js');
-        if (0 === count($files)) {
+        if (0 === \count($files)) {
             return TaskResult::createSkipped($this, $context);
         }
 
@@ -131,7 +130,7 @@ final class ESLint extends AbstractExternalTask
         }
 
         if ($hasErrors) {
-            $errorMessage = sprintf("You have ESLint Errors:\n\n%s", implode("\n", $messages));
+            $errorMessage = \sprintf("You have ESLint Errors:\n\n%s", \implode("\n", $messages));
 
             return TaskResult::createFailed($this, $context, $errorMessage);
         }

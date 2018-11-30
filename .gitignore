@@ -3,3 +3,4 @@ yarn.lock
 
 /node_modules/
 /vendor/
+.php_cs.cache
