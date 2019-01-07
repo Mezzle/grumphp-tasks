@@ -95,7 +95,7 @@ final class ESLint extends AbstractExternalTask
         $arguments = $this->processBuilder->createArgumentsForCommand('eslint');
         $arguments->add('--format=table');
         $arguments->addOptionalArgument('--no-eslintrc', $config['no_eslintrc']);
-        $arguments->addOptionalArgument('--config %s', $config['config']);
+        $arguments->addOptionalArgument('--config=%s', $config['config']);
         $arguments->addOptionalArgument('--debug', $config['debug']);
 
         if ($context instanceof RunContext && $config['config'] !== null) {
