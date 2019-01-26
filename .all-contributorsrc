@@ -40,6 +40,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "deevus",
+      "name": "Simon Hartcher",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/856194?v=4",
+      "profile": "http://simonhartcher.com",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7
