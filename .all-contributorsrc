@@ -50,6 +50,15 @@
         "code",
         "ideas"
       ]
+    },
+    {
+      "login": "danlake",
+      "name": "Dan Lake",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5494442?v=4",
+      "profile": "https://gymshark.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
