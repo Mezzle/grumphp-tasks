@@ -27,7 +27,7 @@ parameters:
     eslint: ~
 services:
   task.eslint:
-    class: Stickee\GrumPHP\ESLint
+    class: Mez\GrumPHP\ESLint
     arguments:
       - '@config'
       - '@process_builder'
@@ -40,7 +40,7 @@ services:
 ## Installation
 
 ```
-composer require stickee/grumphp-tasks
+composer require mez/grumphp-tasks
 ```
 and then either
 ```

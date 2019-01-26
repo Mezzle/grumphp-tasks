@@ -1,6 +1,7 @@
 <?php
 /**
- * @copyright (c) 2006-2017 Stickee Technology Limited
+ * @copyright (c) 2017 Stickee Technology Limited
+ * @copyright (c) 2018-2019 Martin Meredith <martin@sourceguru.net>
  */
 namespace Mez\GrumPHP;
 
@@ -17,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class ESLint
  *
- * @package Stickee\GrumPHP
+ * @package Mez\GrumPHP
  */
 final class ESLint extends AbstractExternalTask
 {
