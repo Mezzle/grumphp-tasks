@@ -62,6 +62,7 @@ final class ESLint extends AbstractExternalTask
                 'max_warnings' => -1,
                 'debug' => false,
                 'bin' => null,
+                'skip' => false,
             ]
         );
 
@@ -73,6 +74,7 @@ final class ESLint extends AbstractExternalTask
         $resolver->addAllowedTypes('format', ['null', 'string']);
         $resolver->addAllowedTypes('max_warnings', ['integer']);
         $resolver->addAllowedTypes('debug', ['bool']);
+        $resolver->addAllowedTypes('skip', ['bool']);
 
         return $resolver;
     }
@@ -100,7 +102,7 @@ final class ESLint extends AbstractExternalTask
         $this->runConfiguration = $this->getConfiguration();
 
         $files = $this->getFiles();
-        if ($files->isEmpty()) {
+        if ($this->runConfiguration['skip'] || $files->isEmpty()) {
             return TaskResult::createSkipped($this, $context);
         }
 
