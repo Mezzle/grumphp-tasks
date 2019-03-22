@@ -64,6 +64,7 @@ final class ESLint extends AbstractExternalTask
         $resolver->addAllowedTypes('no_eslintrc', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
         $resolver->addAllowedTypes('debug', ['bool']);
+        $resolver->addAllowedTypes('bin', ['null', 'string']);
 
         return $resolver;
     }
