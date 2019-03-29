@@ -75,6 +75,7 @@ final class ESLint extends AbstractExternalTask
         $resolver->addAllowedTypes('max_warnings', ['integer']);
         $resolver->addAllowedTypes('debug', ['bool']);
         $resolver->addAllowedTypes('skip', ['bool']);
+        $resolver->addAllowedTypes('bin', ['null', 'string']);
 
         return $resolver;
     }
