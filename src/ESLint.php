@@ -5,7 +5,6 @@
  */
 namespace Mez\GrumPHP;
 
-use GrumPHP\Collection\FilesCollection;
 use GrumPHP\Collection\ProcessArgumentsCollection;
 use GrumPHP\Runner\TaskResult;
 use GrumPHP\Runner\TaskResultInterface;
@@ -38,17 +37,17 @@ final class ESLint extends AbstractExternalTask
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'eslint';
     }
-    
+
     /**
      * getConfigurableOptions
      *
-     * @return OptionsResolver
+     * @return \Symfony\Component\OptionsResolver\OptionsResolver
      */
-    public function getConfigurableOptions()
+    public function getConfigurableOptions(): OptionsResolver
     {
         $resolver = new OptionsResolver();
         $resolver->setDefaults(
@@ -81,23 +80,27 @@ final class ESLint extends AbstractExternalTask
     }
 
     /**
+     * canRunInContext
+     *
      * This methods specifies if a task can run in a specific context.
      *
-     * @param ContextInterface $context
+     * @param \GrumPHP\Task\Context\ContextInterface $context
      *
      * @return bool
      */
-    public function canRunInContext(ContextInterface $context)
+    public function canRunInContext(ContextInterface $context): bool
     {
         return $context instanceof GitPreCommitContext || $context instanceof RunContext;
     }
 
     /**
-     * @param ContextInterface $context
+     * run
      *
-     * @return TaskResultInterface
+     * @param \GrumPHP\Task\Context\ContextInterface $context
+     *
+     * @return \GrumPHP\Runner\TaskResultInterface
      */
-    public function run(ContextInterface $context)
+    public function run(ContextInterface $context): TaskResultInterface
     {
         $this->runContext = $context;
         $this->runConfiguration = $this->getConfiguration();
@@ -107,7 +110,7 @@ final class ESLint extends AbstractExternalTask
             return TaskResult::createSkipped($this, $context);
         }
 
-        $arguments = $this->buildProcessArguments($files);
+        $arguments = $this->buildProcessArguments();
         $arguments->addFiles($files);
 
         /** @var Process $process */
@@ -124,7 +127,9 @@ final class ESLint extends AbstractExternalTask
     }
 
     /**
-     * @return FilesCollection
+     * getFiles
+     *
+     * @return \GrumPHP\Collection\FilesCollection
      */
     private function getFiles()
     {
@@ -138,7 +143,9 @@ final class ESLint extends AbstractExternalTask
     }
 
     /**
-     * @return ProcessArgumentsCollection
+     * buildProcessArguments
+     *
+     * @return \GrumPHP\Collection\ProcessArgumentsCollection
      */
     private function buildProcessArguments()
     {
