@@ -5,7 +5,6 @@
  */
 namespace Mez\GrumPHP;
 
-use GrumPHP\Collection\FilesCollection;
 use GrumPHP\Collection\ProcessArgumentsCollection;
 use GrumPHP\Runner\TaskResult;
 use GrumPHP\Runner\TaskResultInterface;
@@ -14,6 +13,7 @@ use GrumPHP\Task\Context\ContextInterface;
 use GrumPHP\Task\Context\GitPreCommitContext;
 use GrumPHP\Task\Context\RunContext;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Process\Process;
 
 /**
  * Class ESLint
@@ -23,140 +23,97 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class ESLint extends AbstractExternalTask
 {
     /**
+     * @var ContextInterface
+     */
+    private $runContext;
+
+    /**
+     * @var array
+     */
+    private $runConfiguration;
+
+    /**
      * getName
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'eslint';
     }
 
     /**
-     * getconfiguration
-     *
-     * @return array
-     */
-    public function getConfiguration()
-    {
-        $configured = $this->grumPHP->getTaskConfiguration($this->getName());
-
-        return $this->getConfigurableOptions()->resolve($configured);
-    }
-
-    /**
      * getConfigurableOptions
      *
-     * @return OptionsResolver
+     * @return \Symfony\Component\OptionsResolver\OptionsResolver
      */
-    public function getConfigurableOptions()
+    public function getConfigurableOptions(): OptionsResolver
     {
         $resolver = new OptionsResolver();
         $resolver->setDefaults(
             [
                 'no_eslintrc' => false,
                 'config' => null,
+                'env' => null,
+                'paths' => null,
+                'extensions' => ['js'],
+                'format' => 'table',
+                'max_warnings' => -1,
                 'debug' => false,
                 'bin' => null,
+                'skip' => false,
             ]
         );
 
         $resolver->addAllowedTypes('no_eslintrc', ['bool']);
         $resolver->addAllowedTypes('config', ['null', 'string']);
+        $resolver->addAllowedTypes('env', ['null', 'string']);
+        $resolver->addAllowedTypes('paths', ['null', 'array']);
+        $resolver->addAllowedTypes('extensions', ['null', 'array']);
+        $resolver->addAllowedTypes('format', ['null', 'string']);
+        $resolver->addAllowedTypes('max_warnings', ['integer']);
         $resolver->addAllowedTypes('debug', ['bool']);
+        $resolver->addAllowedTypes('skip', ['bool']);
         $resolver->addAllowedTypes('bin', ['null', 'string']);
 
         return $resolver;
     }
 
     /**
+     * canRunInContext
+     *
      * This methods specifies if a task can run in a specific context.
      *
-     * @param ContextInterface $context
+     * @param \GrumPHP\Task\Context\ContextInterface $context
      *
      * @return bool
      */
-    public function canRunInContext(ContextInterface $context)
+    public function canRunInContext(ContextInterface $context): bool
     {
         return $context instanceof GitPreCommitContext || $context instanceof RunContext;
     }
 
     /**
-     * @param ContextInterface $context
+     * run
      *
-     * @return TaskResultInterface
+     * @param \GrumPHP\Task\Context\ContextInterface $context
+     *
+     * @return \GrumPHP\Runner\TaskResultInterface
      */
-    public function run(ContextInterface $context)
+    public function run(ContextInterface $context): TaskResultInterface
     {
-        $files = $context->getFiles()->name('*.js');
-        if (0 === \count($files)) {
+        $this->runContext = $context;
+        $this->runConfiguration = $this->getConfiguration();
+
+        $files = $this->getFiles();
+        if ($this->runConfiguration['skip'] || $files->isEmpty()) {
             return TaskResult::createSkipped($this, $context);
         }
 
-        $config = $this->getConfiguration();
+        $arguments = $this->buildProcessArguments();
+        $arguments->addFiles($files);
 
-        $arguments = $config['bin'] !== null
-            ? ProcessArgumentsCollection::forExecutable($config['bin'])
-            : $this->processBuilder->createArgumentsForCommand('eslint');
-
-        $arguments->add('--format=table');
-        $arguments->addOptionalArgument('--no-eslintrc', $config['no_eslintrc']);
-        $arguments->addOptionalArgument('--config=%s', $config['config']);
-        $arguments->addOptionalArgument('--debug', $config['debug']);
-
-        if ($context instanceof RunContext && $config['config'] !== null) {
-            return $this->runOnAllFiles($context, $arguments);
-        }
-
-        return $this->runOnChangedFiles($context, $arguments, $files);
-    }
-
-    /**
-     * @param ContextInterface $context
-     * @param ProcessArgumentsCollection $arguments
-     * @param FilesCollection $files
-     *
-     * @return TaskResult
-     */
-    private function runOnChangedFiles(
-        ContextInterface $context,
-        ProcessArgumentsCollection $arguments,
-        FilesCollection $files
-    ) {
-        $hasErrors = false;
-        $messages = [];
-
-        foreach ($files as $file) {
-            $fileArguments = new ProcessArgumentsCollection($arguments->getValues());
-            $fileArguments->add($file);
-            $process = $this->processBuilder->buildProcess($fileArguments);
-            $process->run();
-
-            if (!$process->isSuccessful()) {
-                $hasErrors = true;
-                $messages[] = $this->formatter->format($process);
-            }
-        }
-
-        if ($hasErrors) {
-            $errorMessage = \sprintf("You have ESLint Errors:\n\n%s", \implode("\n", $messages));
-
-            return TaskResult::createFailed($this, $context, $errorMessage);
-        }
-
-        return TaskResult::createPassed($this, $context);
-    }
-
-    /**
-     * @param ContextInterface $context
-     * @param ProcessArgumentsCollection $arguments
-     *
-     * @return TaskResult
-     */
-    private function runOnAllFiles(ContextInterface $context, ProcessArgumentsCollection $arguments)
-    {
-        $arguments->add('.');
-
+        /** @var Process $process */
         $process = $this->processBuilder->buildProcess($arguments);
         $process->run();
 
@@ -167,5 +124,53 @@ final class ESLint extends AbstractExternalTask
         }
 
         return TaskResult::createPassed($this, $context);
+    }
+
+    /**
+     * getFiles
+     *
+     * @return \GrumPHP\Collection\FilesCollection
+     */
+    private function getFiles()
+    {
+        $files = $this->runContext->getFiles();
+
+        if (!empty($this->runConfiguration['paths'])) {
+            $files = $files->paths($this->runConfiguration['paths']);
+        }
+
+        return $files->extensions($this->runConfiguration['extensions']);
+    }
+
+    /**
+     * buildProcessArguments
+     *
+     * @return \GrumPHP\Collection\ProcessArgumentsCollection
+     */
+    private function buildProcessArguments()
+    {
+        $arguments = $this->runConfiguration['bin'] !== null
+            ? ProcessArgumentsCollection::forExecutable($this->runConfiguration['bin'])
+            : $this->processBuilder->createArgumentsForCommand('eslint');
+
+        $arguments->addRequiredArgument('--format=%s', $this->runConfiguration['format']);
+        $arguments->addOptionalArgument('--no-eslintrc', $this->runConfiguration['no_eslintrc']);
+        $arguments->addOptionalArgument('--config=%s', $this->runConfiguration['config']);
+        $arguments->addOptionalArgument('--env=%s', $this->runConfiguration['env']);
+        $arguments->add(\sprintf('--max-warnings=%d', $this->runConfiguration['max_warnings']));
+
+        foreach ($this->runConfiguration['extensions'] as $extension) {
+            if (!$extension) {
+                continue;
+            }
+
+            $extension = '.' . $extension;
+
+            $arguments->addOptionalArgumentWithSeparatedValue('--ext', $extension);
+        }
+
+        $arguments->addOptionalArgument('--debug', $this->runConfiguration['debug']);
+
+        return $arguments;
     }
 }
