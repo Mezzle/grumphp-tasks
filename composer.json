@@ -15,7 +15,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.13.1",
-        "sensiolabs/security-checker": "^5.0.1",
+        "sensiolabs/security-checker": "^5.0.1 || ^6.0.0",
         "jakub-onderka/php-parallel-lint": "^1.0.0"
     },
     "autoload": {
