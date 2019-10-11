@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @copyright (c) 2017 Stickee Technology Limited
  * @copyright (c) 2018-2019 Martin Meredith <martin@sourceguru.net>
  */
+
 namespace Mez\GrumPHP;
 
 use GrumPHP\Collection\ProcessArgumentsCollection;
@@ -99,6 +102,8 @@ final class ESLint extends AbstractExternalTask
      * @param \GrumPHP\Task\Context\ContextInterface $context
      *
      * @return \GrumPHP\Runner\TaskResultInterface
+     *
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
     public function run(ContextInterface $context): TaskResultInterface
     {
@@ -106,6 +111,7 @@ final class ESLint extends AbstractExternalTask
         $this->runConfiguration = $this->getConfiguration();
 
         $files = $this->getFiles();
+
         if ($this->runConfiguration['skip'] || $files->isEmpty()) {
             return TaskResult::createSkipped($this, $context);
         }
@@ -146,6 +152,8 @@ final class ESLint extends AbstractExternalTask
      * buildProcessArguments
      *
      * @return \GrumPHP\Collection\ProcessArgumentsCollection
+     *
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
     private function buildProcessArguments()
     {
