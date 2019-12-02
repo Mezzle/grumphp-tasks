@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.3",
-        "phpro/grumphp": "^0.16.1",
+        "phpro/grumphp": "^0.16.1 || ^0.17.0",
         "symfony/options-resolver": "^4.3"
     },
     "require-dev": {
