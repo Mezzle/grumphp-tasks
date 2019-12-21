@@ -78,24 +78,24 @@
         },
         {
             "name": "gitonomy/gitlib",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gitonomy/gitlib.git",
-                "reference": "49e599915eae04b734f31e6e88f773d32d921e2e"
+                "reference": "a0bea921266ad1c9626d712e7f8687dcc08ca528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/49e599915eae04b734f31e6e88f773d32d921e2e",
-                "reference": "49e599915eae04b734f31e6e88f773d32d921e2e",
+                "url": "https://api.github.com/repos/gitonomy/gitlib/zipball/a0bea921266ad1c9626d712e7f8687dcc08ca528",
+                "reference": "a0bea921266ad1c9626d712e7f8687dcc08ca528",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6 || ^7.0",
-                "symfony/process": "^3.4|^4.0"
+                "symfony/process": "^3.4|^4.0|^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7|^6.5",
+                "phpunit/phpunit": "^5.7|^6.5|^7.0",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -104,7 +104,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -118,19 +118,25 @@
             ],
             "authors": [
                 {
-                    "name": "Alexandre Salomé",
-                    "email": "alexandre.salome@gmail.com",
-                    "homepage": "http://alexandre-salome.fr"
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
                 },
                 {
-                    "name": "Julien DIDIER",
-                    "email": "genzo.wm@gmail.com",
-                    "homepage": "http://www.jdidier.net"
+                    "name": "Julien Didier",
+                    "email": "genzo.wm@gmail.com"
+                },
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Alexandre Salomé",
+                    "email": "alexandre.salome@gmail.com"
                 }
             ],
             "description": "Library for accessing git",
             "homepage": "http://gitonomy.com",
-            "time": "2019-06-23T09:49:01+00:00"
+            "time": "2019-12-08T12:42:25+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -215,16 +221,16 @@
         },
         {
             "name": "phpro/grumphp",
-            "version": "v0.17.0",
+            "version": "v0.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpro/grumphp.git",
-                "reference": "4d7b88d8673de8cbba546577f81a7f02deed4d88"
+                "reference": "9c7d52b8027a03dcfe129db0751dd790227f5b91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpro/grumphp/zipball/4d7b88d8673de8cbba546577f81a7f02deed4d88",
-                "reference": "4d7b88d8673de8cbba546577f81a7f02deed4d88",
+                "url": "https://api.github.com/repos/phpro/grumphp/zipball/9c7d52b8027a03dcfe129db0751dd790227f5b91",
+                "reference": "9c7d52b8027a03dcfe129db0751dd790227f5b91",
                 "shasum": ""
             },
             "require": {
@@ -316,7 +322,7 @@
                 }
             ],
             "description": "A composer plugin that enables source code quality checks.",
-            "time": "2019-11-29T13:17:55+00:00"
+            "time": "2019-12-20T06:31:09+00:00"
         },
         {
             "name": "psr/container",
@@ -465,16 +471,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "7aa5817f1b7a8ed377752b90fcc47dfb3c67b40c"
+                "reference": "6911d432edd5b50822986604fd5a5be3af856d30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/7aa5817f1b7a8ed377752b90fcc47dfb3c67b40c",
-                "reference": "7aa5817f1b7a8ed377752b90fcc47dfb3c67b40c",
+                "url": "https://api.github.com/repos/symfony/config/zipball/6911d432edd5b50822986604fd5a5be3af856d30",
+                "reference": "6911d432edd5b50822986604fd5a5be3af856d30",
                 "shasum": ""
             },
             "require": {
@@ -525,20 +531,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-01T10:50:45+00:00"
+            "time": "2019-12-18T12:00:29+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201"
+                "reference": "82437719dab1e6bdd28726af14cb345c2ec816d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
-                "reference": "f0aea3df20d15635b3cb9730ca5eea1c65b7f201",
+                "url": "https://api.github.com/repos/symfony/console/zipball/82437719dab1e6bdd28726af14cb345c2ec816d0",
+                "reference": "82437719dab1e6bdd28726af14cb345c2ec816d0",
                 "shasum": ""
             },
             "require": {
@@ -601,20 +607,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-01T10:06:17+00:00"
+            "time": "2019-12-17T10:32:23+00:00"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "ad46a4def1325befab696b49c839dffea3fc92bd"
+                "reference": "79b0358207a3571cc3af02a57d0321927921f539"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/ad46a4def1325befab696b49c839dffea3fc92bd",
-                "reference": "ad46a4def1325befab696b49c839dffea3fc92bd",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/79b0358207a3571cc3af02a57d0321927921f539",
+                "reference": "79b0358207a3571cc3af02a57d0321927921f539",
                 "shasum": ""
             },
             "require": {
@@ -674,11 +680,11 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2019-12-01T10:19:36+00:00"
+            "time": "2019-12-19T16:00:02+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -806,7 +812,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -856,7 +862,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -1134,16 +1140,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.1",
+            "version": "v4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "51c0135ef3f44c5803b33dc60e96bf4f77752726"
+                "reference": "b84501ad50adb72a94fb460a5b5c91f693e99c9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/51c0135ef3f44c5803b33dc60e96bf4f77752726",
-                "reference": "51c0135ef3f44c5803b33dc60e96bf4f77752726",
+                "url": "https://api.github.com/repos/symfony/process/zipball/b84501ad50adb72a94fb460a5b5c91f693e99c9b",
+                "reference": "b84501ad50adb72a94fb460a5b5c91f693e99c9b",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1185,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-28T13:33:56+00:00"
+            "time": "2019-12-06T10:06:46+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -1241,16 +1247,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.0.1",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "51b684480184fa767b97e28eaca67664e48dd3e9"
+                "reference": "847661e77afa48d99ecfa508e8b60f0b029a19c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/51b684480184fa767b97e28eaca67664e48dd3e9",
-                "reference": "51b684480184fa767b97e28eaca67664e48dd3e9",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/847661e77afa48d99ecfa508e8b60f0b029a19c0",
+                "reference": "847661e77afa48d99ecfa508e8b60f0b029a19c0",
                 "shasum": ""
             },
             "require": {
@@ -1296,7 +1302,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-18T17:27:11+00:00"
+            "time": "2019-12-10T11:06:55+00:00"
         }
     ],
     "packages-dev": [
@@ -2123,6 +2129,7 @@
                 "json",
                 "normalizer"
             ],
+            "abandoned": "ergebnis/composer-json-normalizer",
             "time": "2019-01-09T14:43:16+00:00"
         },
         {
@@ -2188,6 +2195,7 @@
                 "normalizer",
                 "plugin"
             ],
+            "abandoned": "ergebnis/composer-normalize",
             "time": "2019-09-07T10:12:23+00:00"
         },
         {
@@ -2291,6 +2299,7 @@
                 "json",
                 "normalizer"
             ],
+            "abandoned": "ergebnis/json-normalizer",
             "time": "2018-10-07T17:36:39+00:00"
         },
         {
@@ -2340,6 +2349,7 @@
                 "json",
                 "printer"
             ],
+            "abandoned": "ergebnis/json-printer",
             "time": "2018-08-11T23:54:50+00:00"
         },
         {
