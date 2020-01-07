@@ -2199,37 +2199,38 @@
         },
         {
             "name": "localheinz/composer-normalize",
-            "version": "2.0.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "91c456e7a2f3c6e8245895cf748187056914b012"
+                "reference": "38a8ce53a18e0c6b1e00eb3da57c27d695fe38df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/91c456e7a2f3c6e8245895cf748187056914b012",
-                "reference": "91c456e7a2f3c6e8245895cf748187056914b012",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/38a8ce53a18e0c6b1e00eb3da57c27d695fe38df",
+                "reference": "38a8ce53a18e0c6b1e00eb3da57c27d695fe38df",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1.0",
-                "ergebnis/composer-json-normalizer": "^2.0.0",
-                "ergebnis/json-normalizer": "~0.10.0",
-                "ergebnis/json-printer": "^3.0.1",
+                "ergebnis/composer-json-normalizer": "^2.0.1",
+                "ergebnis/json-normalizer": "~0.10.1",
+                "ergebnis/json-printer": "^3.0.2",
                 "localheinz/diff": "^1.0.1",
-                "php": "^7.2"
+                "php": "^7.1"
             },
             "require-dev": {
                 "composer/composer": "^1.7.0",
-                "ergebnis/php-cs-fixer-config": "~1.1.1",
-                "ergebnis/phpstan-rules": "~0.14.1",
-                "ergebnis/test-util": "~0.9.0",
-                "jangregor/phpstan-prophecy": "~0.5.0",
+                "ergebnis/php-cs-fixer-config": "~1.1.2",
+                "ergebnis/phpstan-rules": "~0.14.2",
+                "ergebnis/test-util": "~0.9.1",
+                "jangregor/phpstan-prophecy": "~0.6.0",
                 "phpstan/extension-installer": "^1.0.3",
-                "phpstan/phpstan": "~0.11.19",
-                "phpstan/phpstan-deprecation-rules": "~0.11.2",
-                "phpstan/phpstan-strict-rules": "~0.11.1",
-                "phpunit/phpunit": "^8.5.0",
+                "phpstan/phpstan": "~0.12.3",
+                "phpstan/phpstan-deprecation-rules": "~0.12.0",
+                "phpstan/phpstan-phpunit": "~0.12.3",
+                "phpstan/phpstan-strict-rules": "~0.12.0",
+                "phpunit/phpunit": "^7.5.18",
                 "symfony/filesystem": "^4.4.1"
             },
             "type": "composer-plugin",
@@ -2260,7 +2261,7 @@
                 "plugin"
             ],
             "abandoned": "ergebnis/composer-normalize",
-            "time": "2019-12-17T08:12:55+00:00"
+            "time": "2020-01-01T11:15:02+00:00"
         },
         {
             "name": "localheinz/diff",
