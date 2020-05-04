@@ -2152,16 +2152,16 @@
         },
         {
             "name": "localheinz/composer-normalize",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "ae076999ae6a4a4641906db0e947dd70391ac296"
+                "reference": "d0faf549e565757a7ffbf1f306a4293080e43bdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/ae076999ae6a4a4641906db0e947dd70391ac296",
-                "reference": "ae076999ae6a4a4641906db0e947dd70391ac296",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/d0faf549e565757a7ffbf1f306a4293080e43bdd",
+                "reference": "d0faf549e565757a7ffbf1f306a4293080e43bdd",
                 "shasum": ""
             },
             "require": {
@@ -2213,7 +2213,7 @@
                 "plugin"
             ],
             "abandoned": "ergebnis/composer-normalize",
-            "time": "2020-04-30T21:23:32+00:00"
+            "time": "2020-05-01T12:02:09+00:00"
         },
         {
             "name": "localheinz/diff",
